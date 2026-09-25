@@ -1,0 +1,41 @@
+{
+  "name": "ship-loop",
+  "version": "0.1.0",
+  "description": "Take a GitHub issue to a verified preview and a gated merge: isolated worktree, coding agent, test and risk gates with a bounded fix loop, PR, live preview check, merge only on green.",
+  "type": "module",
+  "bin": {
+    "ship-loop": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "ai-agents",
+    "claude-code",
+    "github",
+    "ci",
+    "automation",
+    "preview-deployments",
+    "developer-tools"
+  ],
+  "author": "Abdelhak Ahzab",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahzab/ship-loop.git"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
