@@ -64,9 +64,9 @@ export async function drive(issue: number, deps: Deps, opts: { retry?: boolean }
   }
   if (raw.state !== "open" && !reached(state.phase, "pr-open")) throw new Error(`#${issue} is ${raw.state}`);
 
-  const advance = (phase: Phase, patch: Partial<RunState> = {}) => {
+  const advance = (phase: Phase, patch: Partial<RunState> = {}, note?: string) => {
     state = store.save({ ...state, ...patch, phase });
-    log(`✓ ${phase}`);
+    log(`✓ ${phase}${note ? ` (${note})` : ""}`);
   };
 
   try {
@@ -134,7 +134,7 @@ export async function drive(issue: number, deps: Deps, opts: { retry?: boolean }
 
     if (!reached(state.phase, "preview-verified")) {
       if (!config.preview.enabled) {
-        advance("preview-verified", { previewStatus: "skipped" });
+        advance("preview-verified", { previewStatus: "skipped" }, "skipped: preview.enabled is false");
       } else {
         const sha = await git.headSha(wt);
         const deadline = now() + config.preview.timeoutSec * 1000;

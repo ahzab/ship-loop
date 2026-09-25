@@ -16,7 +16,7 @@ A coding agent is good at writing the change. It is not the thing you want decid
 
 I built the first version of this as the delivery loop for my own products, which I ship next to a full-time job. This is that loop as a standalone tool that works on any GitHub repo.
 
-**See it work:** [ship-loop-demo](https://github.com/ahzab/ship-loop-demo) has real issues, and its pull requests were opened by ship-loop.
+**See it work:** [ship-loop-demo#1](https://github.com/ahzab/ship-loop-demo/issues/1) is a real issue with five acceptance criteria. ship-loop took it to [PR #2](https://github.com/ahzab/ship-loop-demo/pull/2): Claude Code wrote the CSV export and its tests in an isolated worktree, typecheck and tests passed on the first attempt, the diff scored low risk, and the PR carries all of it.
 
 ## What a run does
 

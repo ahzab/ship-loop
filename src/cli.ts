@@ -33,7 +33,8 @@ async function token(root: string): Promise<string> {
 }
 
 function printState(s: RunState): void {
-  const bits = [`#${s.issue}`, s.phase, s.branch];
+  const phase = s.phase === "preview-verified" && s.previewStatus !== "verified" ? `pr-open, preview ${s.previewStatus ?? "unchecked"}` : s.phase;
+  const bits = [`#${s.issue}`, phase, s.branch];
   if (s.prUrl) bits.push(s.prUrl);
   if (s.previewUrl) bits.push(`preview ${s.previewStatus ?? ""} ${s.previewUrl}`.trim());
   if (s.risk) bits.push(`risk ${s.risk.level}`);
